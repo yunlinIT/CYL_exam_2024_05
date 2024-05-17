@@ -1,6 +1,10 @@
 server:
   port: 8081
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -13,3 +17,9 @@ spring:
     password: 
 mybatis:
   type-aliases-package: com.example.demo.vo
+custom:
+  siteName: exam_ygy_24_05
+  siteMainUri: http://localhost:8081
+  emailFrom: no-reply@localhost
+  emailFromName: exam_ygy_24_05
+  genFileDirPath: C:\work\sts-4.19.1.RELEASE-workspace2\demo\images

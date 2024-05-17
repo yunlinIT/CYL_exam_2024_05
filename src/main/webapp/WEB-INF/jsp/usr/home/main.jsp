@@ -30,6 +30,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
+	padding-top:40px;
 }
 
 .area-search-box {
@@ -55,6 +56,8 @@
 
 .content-box {
 	display: flex;
+	justify-content: center; /* 좌우 가운데 정렬 */
+	width: 100%; /* 부모 요소의 전체 너비를 사용 */
 }
 
 .area-outer-box {
@@ -63,25 +66,26 @@
 
 /* 날씨 박스  */
 .weather-outer-box {
-	width: 50%;
 	display: flex;
-	justify-content: center;
+	justify-content: center; /* 좌우 가운데 정렬 */
+	width: 100%; /* 부모 요소의 전체 너비를 사용 */
+	margin-top: 20px;
 }
 
 .weather-info {
-	width: 300px;
-	height: 300px;
+	width: 150px;
+	height: 150px;
 	border: none;
 	border-radius: 12px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	background: #ffffff;
-	color: #000000;
+	font-weight: bold;
+	color: black;
+	background-color: ffdfd4;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 1.6;
 }
 
@@ -122,23 +126,56 @@
 	background-color: #f3f4f6; /* 연한 회색 배경 */
 	color: #333; /* 어두운 글씨 */
 }
+
+.area-select-box {
+text-align: center;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 50px; /* margin-top을 50px로 줄였습니다. */
+	font-size: 18px;
+	color: black;
+	font-weight: bold; /* 글씨를 두껍게 만듭니다. */
+}
 </style>
+
+
+
+
 
 <div class="big-outer-box">
 	<div class="small-outer-box">
-		<!-- 검색창 및 버튼 -->
+		<!-- FAQ 검색창 및 버튼 -->
+		<h1>질문을 해주세요</h1>
 		<div class="search-container">
-			<input type="text" id="faq-search" class="search-input" placeholder="FAQ 검색">
-			<button type="button" onclick="searchFAQ()" class="search-btn">검색</button>
+			<form action="../FAQ/search" method="POST">
+				<input name="searchKeyword" type="text" id="faq-search" class="search-input" placeholder="FAQ 검색">
+				<button type="submit" class="search-btn" style="background-color: #ffdfd4;">검색</button>
+			</form>
 		</div>
 
+
+		<h1>지역별 날씨와 관광지를 찾아보세요</h1>
+
 		<!-- 날씨 SELECT -->
+		<div class="weather-outer-box">
+			<div class="weather-small-outer-box">
+				<!-- 날씨 정보 표시 요소 -->
+				<div id="weather-info" class="weather-info mt-4 text-center">
+					<p id="city" style="font-size: 12px;"></p>
+					<p id="temperature"></p>
+					<p id="description" style="font-size: 13px;"></p>
+				</div>
+			</div>
+		</div>
 		<div class="content-box">
 			<div class="area-outer-box">
 				<!-- 지역 select 박스 -->
 				<div class="area-select-box mt-4">
 					<select id="region-select" class="search-input" onchange="fetchWeather(); handleRegionChange();">
-						<option value="Daejeon" selected>대전</option>
+						<option value="" selected disabled>지역을 선택해주세요</option>
+						<option value="Daejeon">대전</option>
 						<option value="Seoul">서울</option>
 						<option value="Busan">부산</option>
 						<option value="Los Angeles">로스앤젤레스</option>
@@ -148,35 +185,21 @@
 						<option value="Moscow">모스크바</option>
 						<option value="Madrid">마드리드</option>
 						<option value="Paris">파리</option>
-
-
 					</select>
-				</div>
-
-			</div>
-			<div class="weather-outer-box">
-				<div class="weather-small-outer-box">
-					<!-- 날씨 정보 표시 요소 -->
-					<div id="weather-info" class="weather-info mt-4 text-center"></div>
-					<p id="city"></p>
-					<p id="temperature"></p>
-					<p id="description"></p>
-
 				</div>
 			</div>
 		</div>
-
 
 		<div class="tour-spot-box" id="tour-spot-box">
 			<div class="tour-spot-small-box">
 				<table class="tour-info-table">
 					<thead>
 						<tr>
-							<th>위치</th>
-							<th>전화번호</th>
-							<th>한줄소개</th>
-							<th>관광시간</th>
-							<th>홈페이지</th>
+							<th style="background-color: #ffdfd4;">위치</th>
+							<th style="background-color: #ffdfd4;">전화번호</th>
+							<th style="background-color: #ffdfd4;">한줄소개</th>
+							<th style="background-color: #ffdfd4;">관광시간</th>
+							<th style="background-color: #ffdfd4;">홈페이지</th>
 						</tr>
 					</thead>
 					<tbody>
