@@ -141,7 +141,7 @@ h1 {
 </style>
 
 
-
+		<h2>장윤린</h2>
 
 
 <div class="big-outer-box">
@@ -150,7 +150,7 @@ h1 {
 		<h1>질문을 해주세요</h1>
 		<div class="search-container">
 			<form action="../FAQ/search" method="POST">
-				<input name="searchKeyword" type="text" id="faq-search" class="search-input" placeholder="FAQ 검색">
+				<input name="searchKeyword" autocomplete='off' type="text" id="faq-search" class="search-input" placeholder="FAQ 검색">
 				<button type="submit" class="search-btn" style="background-color: #ffdfd4;">검색</button>
 			</form>
 		</div>
@@ -195,64 +195,24 @@ h1 {
 				<table class="tour-info-table">
 					<thead>
 						<tr>
-							<th style="background-color: #ffdfd4;">위치</th>
-							<th style="background-color: #ffdfd4;">전화번호</th>
-							<th style="background-color: #ffdfd4;">한줄소개</th>
-							<th style="background-color: #ffdfd4;">관광시간</th>
-							<th style="background-color: #ffdfd4;">홈페이지</th>
+							<th style="background-color: #ffdfd4">구분</th>
+							<th style="background-color: #ffdfd4">명소 이름</th>
+							<th style="background-color: #ffdfd4">소재지</th>
+							<th style="background-color: #ffdfd4">전화번호</th>
+							<th style="background-color: #ffdfd4">부서 전화번호</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!-- 첫 번째 행 -->
-						<tr>
-							<td>대전 시립미술관</td>
-							<td>042-123-4567</td>
-							<td>현대미술 중심의 전시 공간</td>
-							<td>09:00 - 18:00</td>
-							<td>
-								<a href="http://museum.daejeon.go.kr">방문하기</a>
-							</td>
-						</tr>
-						<!-- 두 번째 행 -->
-						<tr>
-							<td>대전 과학기술 박물관</td>
-							<td>042-860-2200</td>
-							<td>과학의 원리를 체험하고 배울 수 있는 공간</td>
-							<td>09:00 - 17:00</td>
-							<td>
-								<a href="http://science.daejeon.go.kr">방문하기</a>
-							</td>
-						</tr>
-						<!-- 세 번째 행 -->
-						<tr>
-							<td>한밭수목원</td>
-							<td>042-270-8485</td>
-							<td>자연과 함께하는 힐링의 장소</td>
-							<td>08:00 - 19:00</td>
-							<td>
-								<a href="http://hanbat.daejeon.go.kr">방문하기</a>
-							</td>
-						</tr>
-						<!-- 네 번째 행 -->
-						<tr>
-							<td>대전 동물원</td>
-							<td>042-580-4820</td>
-							<td>다양한 동물들을 가까이에서 만나볼 수 있는 동물원</td>
-							<td>09:00 - 17:00</td>
-							<td>
-								<a href="https://zoo.daejeon.go.kr">방문하기</a>
-							</td>
-						</tr>
-						<!-- 다섯 번째 행 -->
-						<tr>
-							<td>엑스포 과학공원</td>
-							<td>042-250-1234</td>
-							<td>과학과 예술이 어우러진 창의적인 놀이 공간</td>
-							<td>10:00 - 18:00</td>
-							<td>
-								<a href="http://expo.daejeon.go.kr">방문하기</a>
-							</td>
-						</tr>
+						<c:forEach var="touristDestination" items="${touristDestination }">
+				<tr>
+					<td>${touristDestination.division }</td>
+					<td>${touristDestination.placename }</td>
+					<td>${touristDestination.location }</td>
+					<td>${touristDestination.phoneNumber }</td>
+					<td>${touristDestination.departmentphoneNumber }</td>
+				</tr>
+			</c:forEach>
 					</tbody>
 
 				</table>
