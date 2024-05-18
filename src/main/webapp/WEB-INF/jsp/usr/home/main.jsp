@@ -30,7 +30,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
-	padding-top:40px;
+	padding-top: 40px;
 }
 
 .area-search-box {
@@ -128,7 +128,7 @@
 }
 
 .area-select-box {
-text-align: center;
+	text-align: center;
 }
 
 h1 {
@@ -141,7 +141,7 @@ h1 {
 </style>
 
 
-		<h2>장윤린</h2>
+<h2 style="font-size: 30px; font-weight: bold; margin-left: 10%; margin-top: 50px; position: absolute; color: pink;">장윤린</h2>
 
 
 <div class="big-outer-box">
@@ -153,10 +153,26 @@ h1 {
 				<input name="searchKeyword" autocomplete='off' type="text" id="faq-search" class="search-input" placeholder="FAQ 검색">
 				<button type="submit" class="search-btn" style="background-color: #ffdfd4;">검색</button>
 			</form>
+
+		</div>
+		<div class="qlist" style="display: block; text-align: center;">
+			<ul>
+				<li style="font-weight: bold;">질문 목록</li>
+				<li>이 프로젝트의 목적은 무엇인가요?</li>
+				<li>계정을 등록하려면 어떻게 해야 하나요?</li>
+				<li>비밀번호를 잊어버리면 어떻게 해야 하나요?</li>
+				<li>내 프로필 정보를 어떻게 업데이트할 수 있나요</li>
+				<li>새 글을 작성하려면 어떻게 해야 하나요?</li>
+				<li>고객 지원팀에 어떻게 연락할 수 있나요?</li>
+				<li>따라야 할 커뮤니티 가이드라인이 있나요?</li>
+				<li>계정을 삭제할 수 있나요?</li>
+				<li>내 개인 정보는 안전한가요?</li>
+				<li>기술적 문제가 발생하면 어떻게 해야 하나요?</li>
+			</ul>
 		</div>
 
 
-		<h1>지역별 날씨와 관광지를 찾아보세요</h1>
+		<h1>지역별 날씨와 관광지(대전)를 찾아보세요</h1>
 
 		<!-- 날씨 SELECT -->
 		<div class="weather-outer-box">
@@ -177,14 +193,11 @@ h1 {
 						<option value="" selected disabled>지역을 선택해주세요</option>
 						<option value="Daejeon">대전</option>
 						<option value="Seoul">서울</option>
+						<option value="Daegu">대구</option>
 						<option value="Busan">부산</option>
-						<option value="Los Angeles">로스앤젤레스</option>
-						<option value="Paris">파리</option>
 						<option value="Bangkok">방콕</option>
 						<option value="Tokyo">도쿄</option>
-						<option value="Moscow">모스크바</option>
-						<option value="Madrid">마드리드</option>
-						<option value="Paris">파리</option>
+						<option value="New York">뉴욕</option>
 					</select>
 				</div>
 			</div>
@@ -205,14 +218,14 @@ h1 {
 					<tbody>
 						<!-- 첫 번째 행 -->
 						<c:forEach var="touristDestination" items="${touristDestination }">
-				<tr>
-					<td>${touristDestination.division }</td>
-					<td>${touristDestination.placename }</td>
-					<td>${touristDestination.location }</td>
-					<td>${touristDestination.phoneNumber }</td>
-					<td>${touristDestination.departmentphoneNumber }</td>
-				</tr>
-			</c:forEach>
+							<tr>
+								<td>${touristDestination.division }</td>
+								<td>${touristDestination.placename }</td>
+								<td>${touristDestination.location }</td>
+								<td>${touristDestination.phoneNumber }</td>
+								<td>${touristDestination.departmentphoneNumber }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 
 				</table>
