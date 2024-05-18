@@ -179,12 +179,15 @@ h1 {
 			<div class="weather-small-outer-box">
 				<!-- 날씨 정보 표시 요소 -->
 				<div id="weather-info" class="weather-info mt-4 text-center">
-					<p id="city" style="font-size: 12px;"></p>
-					<p id="temperature"></p>
-					<p id="description" style="font-size: 13px;"></p>
+					<p id="city" style="font-size: 14px;"></p>
+					<p id="temperature" style="font-size: 14px;"></p>
+					<p id="humidity" style="font-size: 14px;"></p>		
+					<p id="wind-speed" style="font-size: 14px;"></p>
+					<p id="description" style="font-size: 14px;"></p>
 				</div>
 			</div>
 		</div>
+
 		<div class="content-box">
 			<div class="area-outer-box">
 				<!-- 지역 select 박스 -->
@@ -270,28 +273,31 @@ h1 {
 
 
 <script>
-    function fetchWeather() {
-        var city = document.getElementById('region-select').value;
-        var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
-        var lang = "kr";
-        var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
+function fetchWeather() {
+    var city = document.getElementById('region-select').value;
+    var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
+    var lang = "kr";
+    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
 
-        fetch(apiUrl)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                console.log(data); // 데이터를 콘솔에 출력합니다.
+    fetch(apiUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data); // 데이터를 콘솔에 출력합니다.
 
-                // 받아온 데이터를 HTML에 삽입합니다.
-                document.getElementById('city').textContent = data.name;
-                document.getElementById('temperature').textContent = data.main.temp + "°C";
-                document.getElementById('description').textContent = data.weather[0].description;
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
-    }
+            // 받아온 데이터를 HTML에 삽입합니다.
+            document.getElementById('city').textContent = data.name;
+            document.getElementById('temperature').textContent = "온도: " +data.main.temp + "°C";
+            document.getElementById('description').textContent = "설명: " +data.weather[0].description;
+            document.getElementById('humidity').textContent = "습도: " + data.main.humidity + "%"; // 습도 추가
+            document.getElementById('wind-speed').textContent = "풍속: " + data.wind.speed + " m/s"; // 풍속 추가
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
+}
+
 
     // 페이지 로드 시 날씨 데이터를 가져옵니다.
     window.onload = fetchWeather;
